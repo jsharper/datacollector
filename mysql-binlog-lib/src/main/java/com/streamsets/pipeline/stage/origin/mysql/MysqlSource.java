@@ -142,6 +142,16 @@ public abstract class MysqlSource extends BaseSource {
     hikariConfig.setPassword(getConfig().password);
     hikariConfig.setReadOnly(true);
     hikariConfig.addDataSourceProperty("useSSL", getConfig().useSsl);
+    if (getConfig().driverClassName != null && !getConfig().driverClassName.isEmpty()) {
+      try {
+        Class.forName(getConfig().driverClassName);
+      } catch (ClassNotFoundException e) {
+        LOG.error("Driver class not found: {}", e.getMessage(), e);
+        issues.add(getContext().createConfigIssue(
+            Groups.ADVANCED.name(), null, Errors.MYSQL_009, e.getMessage(), e
+        ));
+      }
+    }
     try {
       dataSource = new HikariDataSource(hikariConfig);
       offsetFactory = isGtidEnabled()

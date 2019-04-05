@@ -147,6 +147,16 @@ public class MysqlSourceConfig {
   public boolean useSsl;
 
   @ConfigDef(
+      required = false,
+      type = ConfigDef.Type.STRING,
+      label = "JDBC Driver Class Name",
+      description = "Class name for pre-JDBC 4 compliant drivers.",
+      displayPosition = 85,
+      group = "ADVANCED"
+  )
+  public String driverClassName;
+
+  @ConfigDef(
       required = true,
       type = ConfigDef.Type.BOOLEAN,
       defaultValue = "false",

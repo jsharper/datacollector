@@ -26,7 +26,8 @@ public enum Errors implements ErrorCode {
   MYSQL_004("Error processing MySql event {} at offset {}: {}"),
   MYSQL_006("MySql server error: {}"),
   MYSQL_007("Ignore tables format error: {}"),
-  MYSQL_008("Include tables format error: {}"),;
+  MYSQL_008("Include tables format error: {}"),
+  MYSQL_009("Driver class not found: {}"),;
   private final String msg;
 
   Errors(String msg) {
