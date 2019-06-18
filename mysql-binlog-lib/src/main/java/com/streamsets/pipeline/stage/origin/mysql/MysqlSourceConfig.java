@@ -149,6 +149,7 @@ public class MysqlSourceConfig {
   @ConfigDef(
       required = false,
       type = ConfigDef.Type.STRING,
+      defaultValue = "com.mysql.cj.jdbc.Driver",
       label = "JDBC Driver Class Name",
       description = "Class name for pre-JDBC 4 compliant drivers.",
       displayPosition = 85,
